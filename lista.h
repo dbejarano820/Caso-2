@@ -42,6 +42,7 @@ class listaSimple{
     int largo();
     Nodo* eraseFirst();
     Nodo* eraseLast();
+    Nodo* seeFirst();
     //bool esta();
 
 };

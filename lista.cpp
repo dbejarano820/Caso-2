@@ -69,3 +69,7 @@ Nodo* listaSimple::eraseLast(){
             return borrado;
     }
 }
+
+Nodo* listaSimple::seeFirst(){
+    return primerNodo;
+}
