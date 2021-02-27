@@ -1,6 +1,5 @@
 #include "lista.h"
 #include "restaurantes.h"
-//probando
 
 int main(){
 
@@ -9,8 +8,11 @@ int main(){
     lista->insertFirst(new Nodo(4));
 
     Restaurante * res = new Restaurante();
-    res->setDistanciaBici(15);
-    cout << res->repBici->distanciaAlRestaurante << endl;
+    res->setDistanciaBici(205);
+    res->setDistanciaMoto(80);
+    res->setDistanciaCarro(900);
+    res->setDistanciaPedido(15);
+    res->calculateQuickest();
 
     cout << lista->primerNodo->dato << endl;
     cout << "funciona" << endl;

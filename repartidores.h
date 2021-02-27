@@ -12,8 +12,8 @@ class Repartidor{
     string tipoRepartidor;
 
 
-    int calculateTime(int pDistanciaPedido){
-        return (distanciaAlRestaurante + pDistanciaPedido) / speed;
+    double calculateTime(int pDistanciaPedido){
+        return (distanciaAlRestaurante + pDistanciaPedido) / (speed + 0.0);
     }
 
     void setDistanciaAlRestaurante(int pDistancia){
