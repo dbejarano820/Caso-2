@@ -1,3 +1,6 @@
+#ifndef _repartidores_
+#define _repartidores_
+
 #include <iostream>
 using namespace std;
 
@@ -40,3 +43,5 @@ class carro : public repartidor{
         tipoRepartidor = "Carro";
     }
 };
+
+#endif
