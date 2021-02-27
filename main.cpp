@@ -6,10 +6,7 @@ int main(){
 
     listaSimple* lista = new listaSimple();
     lista->insertFirst(new Nodo(4));
-<<<<<<< HEAD
     cout << "FUNCIONA DE ESTA MANERA" << endl;
-=======
->>>>>>> a1a1ad867728fc95cfc6072abdcf8a713462dc12
 
     Restaurante * res = new Restaurante();
     res->setDistanciaBici(205);
