@@ -3,14 +3,14 @@
 class Pila : public listaSimple{
     public:
     Nodo* pop();
-    Nodo* push();
+    void push(Nodo* );
     Nodo* peek();
 };
 
 class Cola : public listaSimple{
 
     public:
-    Nodo* encolar();
+    void encolar(Nodo* );
     Nodo* desencolar();
     Nodo* verFrente();
 };

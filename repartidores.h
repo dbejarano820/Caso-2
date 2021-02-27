@@ -4,13 +4,14 @@
 #include <iostream>
 using namespace std;
 
-class repartidor{
-    protected:
+
+class Repartidor{
+    public:
     int distanciaAlRestaurante;
     int speed;
     string tipoRepartidor;
 
-    public:
+
     int calculateTime(int pDistanciaPedido){
         return (distanciaAlRestaurante + pDistanciaPedido) / speed;
     }
@@ -18,27 +19,31 @@ class repartidor{
     void setDistanciaAlRestaurante(int pDistancia){
         distanciaAlRestaurante = pDistancia;
     }
+
+    string getTipoRepartidor(){
+        return tipoRepartidor;
+    }
 };
 
-class bici : public repartidor{
+class Bici: public Repartidor{
     public:
-    bici(){
+    Bici(){
         speed = 10;
         tipoRepartidor = "Bici";
     }
 };
 
-class moto : public repartidor{
+class Moto: public Repartidor{
     public:
-    moto(){
+    Moto(){
         speed = 20;
         tipoRepartidor = "Moto";
     }
 };
 
-class carro : public repartidor{
+class Carro: public Repartidor{
     public:
-    carro(){
+    Carro(){
         speed = 30;
         tipoRepartidor = "Carro";
     }
