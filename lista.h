@@ -2,7 +2,7 @@
 using namespace std;
 
 class Nodo{
-
+    public:
     int dato;
     //cualquier tipo de dato adicionales
 
@@ -40,6 +40,8 @@ class listaSimple{
     void insertFirst(Nodo*);
     void insertLast(Nodo*);
     int largo();
+    Nodo* eraseFirst();
+    Nodo* eraseLast();
     //bool esta();
 
 };
