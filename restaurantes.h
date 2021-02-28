@@ -69,7 +69,8 @@ class Restaurante{
         cout << "El carro dura " << repCarro->calculateTime(distanciaPedido) << endl;
 
         cout << "El repartidor mas rapido es el que va en "<<repartidorMasCercano->getTipoRepartidor() << endl;
-    }*/
+        */
+    }
 };
 
 #endif
