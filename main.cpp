@@ -12,8 +12,8 @@ int main(){
   //  lista.seeFirst();
 
     Pila<int> p;
-    p.push(valor2);
-    p.push(valor3);
+   // p.push(valor2);
+   // p.push(valor3);
     cout << p.pop() << endl;
     cout << p.pop() << endl;
     p.peek();
