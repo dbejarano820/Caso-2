@@ -13,8 +13,8 @@ class Repartidor{
     bool pedidoPendiente = false;
 
 
-    double calculateTime(int pDistanciaPedido){
-        return (distanciaAlRestaurante + pDistanciaPedido) / (speed + 0.0);
+    int calculateTime(int pDistanciaPedido){
+        return (distanciaAlRestaurante + pDistanciaPedido) / speed;
     }
 
     void setDistanciaAlRestaurante(int pDistancia){
