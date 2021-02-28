@@ -35,24 +35,24 @@ class Restaurante{
     }
 
     void setDistanciaBici(int pDistancia){
-        repBici->setDistanciaAlRestaurante(pDistancia);
+        //repBici->setDistanciaAlRestaurante(pDistancia);
     }
 
     void setDistanciaMoto(int pDistancia){
-        repMoto->setDistanciaAlRestaurante(pDistancia);
+        //repMoto->setDistanciaAlRestaurante(pDistancia);
     }
 
     void setDistanciaCarro(int pDistancia){
-        repCarro->setDistanciaAlRestaurante(pDistancia);
+        //repCarro->setDistanciaAlRestaurante(pDistancia);
     }
 
     Repartidor * getRepartidor(string tipoRepartidor){
-        Nodo<Repartidor*> * nodo = listaRepartidores->current;
+        //Nodo<Repartidor*> * nodo = listaRepartidores->current;
 
     }
 
     void calculateQuickest(){
-        tiempoMasCorto = repBici->calculateTime(distanciaPedido);
+        /*tiempoMasCorto = repBici->calculateTime(distanciaPedido);
         repartidorMasCercano = repBici;
         cout << "La bici dura " << repBici->calculateTime(distanciaPedido) << endl;
 
@@ -69,7 +69,7 @@ class Restaurante{
         cout << "El carro dura " << repCarro->calculateTime(distanciaPedido) << endl;
 
         cout << "El repartidor mas rapido es el que va en "<<repartidorMasCercano->getTipoRepartidor() << endl;
-    }
+    }*/
 };
 
 #endif

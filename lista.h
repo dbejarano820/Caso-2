@@ -33,7 +33,7 @@ template<class T>
 class ListaSimple{
 
     private:
-    int count = 0;
+    int count;
     Nodo<T>* primerNodo; //first node
     Nodo<T>* ultimoNodo; //last node
     Nodo<T>* current;
@@ -73,8 +73,9 @@ class ListaSimple{
     }
 
     T eraseFirst(){
-        if(isEmpty())
-            return (T)nullptr;
+        if(count == 0){
+            return (T)NULL;
+        }
         else{
             count--;
             Nodo<T>* primero = primerNodo;
@@ -90,9 +91,9 @@ class ListaSimple{
     }
 
     T seeFirst(){
-        if (isEmpty()){
+         if (count == 0){
             cout << "VACIA" << endl;
-            return (T)nullptr;
+            return (T)NULL;
         } else{
             cout << primerNodo->getValue() << endl;
             return primerNodo->getValue();

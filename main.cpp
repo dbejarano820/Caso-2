@@ -1,8 +1,12 @@
+#include <iostream>
+using namespace std;
+
 #include "pilacola.h"
 #include "restaurantes.h"
 #include "repartidores.h"
 
 int main(){
+    
     cout << endl;
     int valor = 4;
     int valor2 = 6;
@@ -13,8 +17,9 @@ int main(){
     cout << endl;
 
     Pila<int> p;
-    p.push(valor2);
-    p.push(valor3);
+   // p.push(valor2);
+   // p.push(valor3);
+    cout << p.pop() << endl;
     cout << p.pop() << endl;
     p.peek();
     cout << endl;
@@ -28,9 +33,9 @@ int main(){
     cout << c.desencolar() << endl;;
     c.verFrente();
 
-
     cout << "FUNCIONA DE ESTA MANERA" << endl;
 
+    /*
     Restaurante * res = new Restaurante();
 
     int distanciaBici;
@@ -56,6 +61,7 @@ int main(){
     res->setDistanciaCarro(distanciaCarro);
     res->setDistanciaPedido(distanciaPedido);
     res->calculateQuickest();
+    */
 
     return 0;
 }
