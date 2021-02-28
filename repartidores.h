@@ -10,7 +10,7 @@ class Repartidor{
     int distanciaAlRestaurante;
     int speed;
     string tipoRepartidor;
-    bool pedidoPendiente = false;
+    bool pedidoPendiente;
 
 
     int calculateTime(int pDistanciaPedido){
@@ -28,9 +28,10 @@ class Repartidor{
 
 class Bici: public Repartidor{
     public:
-    Bici(string pNombre){
+    Bici(){
         speed = 10;
-        tipoRepartidor = pNombre;
+        tipoRepartidor = "Bici";
+        pedidoPendiente = false;
     }
 };
 
@@ -39,6 +40,7 @@ class Moto: public Repartidor{
     Moto(){
         speed = 20;
         tipoRepartidor = "Moto";
+        pedidoPendiente = false;
     }
 };
 
@@ -47,6 +49,7 @@ class Carro: public Repartidor{
     Carro(){
         speed = 30;
         tipoRepartidor = "Carro";
+        pedidoPendiente = false;
     }
 };
 

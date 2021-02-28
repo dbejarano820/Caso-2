@@ -3,19 +3,22 @@
 #include "repartidores.h"
 
 int main(){
+    
     int valor = 4;
     int valor2 = 6;
     int valor3 = 10;
     ListaSimple<int> lista;
     lista.insertFirst(valor);;
-    lista.seeFirst();
+  //  lista.seeFirst();
 
     Pila<int> p;
     p.push(valor2);
     p.push(valor3);
     cout << p.pop() << endl;
+    cout << p.pop() << endl;
     p.peek();
-
+    cout <<"sigue" << endl;
+/*
     Cola<int> c;
     c.encolar(valor);
     c.encolar(valor2);
@@ -24,7 +27,7 @@ int main(){
     cout << c.desencolar() << endl;
     cout << c.desencolar() << endl;;
     c.verFrente();
-
+   */ 
 
     cout << "FUNCIONA DE ESTA MANERA" << endl;
 
