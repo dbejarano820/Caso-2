@@ -1,3 +1,6 @@
+#ifndef _pilacola_
+#define _pilacola_
+
 #include "lista.h"
 
 template<class T>
@@ -31,3 +34,5 @@ class Cola : public ListaSimple<T>{
         return (T)ListaSimple<T>::seeFirst();
     }
 };
+
+#endif

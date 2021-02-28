@@ -3,18 +3,21 @@
 #include "repartidores.h"
 
 int main(){
+    cout << endl;
     int valor = 4;
     int valor2 = 6;
     int valor3 = 10;
     ListaSimple<int> lista;
     lista.insertFirst(valor);;
     lista.seeFirst();
+    cout << endl;
 
     Pila<int> p;
     p.push(valor2);
     p.push(valor3);
     cout << p.pop() << endl;
     p.peek();
+    cout << endl;
 
     Cola<int> c;
     c.encolar(valor);

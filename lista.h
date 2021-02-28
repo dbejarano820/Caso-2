@@ -1,3 +1,6 @@
+#ifndef _lista_
+#define _lista_
+
 #include <iostream>
 using namespace std;
 
@@ -98,3 +101,5 @@ class ListaSimple{
     //bool esta();
 
 };
+
+#endif

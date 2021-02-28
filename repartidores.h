@@ -28,9 +28,9 @@ class Repartidor{
 
 class Bici: public Repartidor{
     public:
-    Bici(string pNombre){
+    Bici(){
         speed = 10;
-        tipoRepartidor = pNombre;
+        tipoRepartidor = "bici";
     }
 };
 
@@ -38,7 +38,7 @@ class Moto: public Repartidor{
     public:
     Moto(){
         speed = 20;
-        tipoRepartidor = "Moto";
+        tipoRepartidor = "moto";
     }
 };
 
@@ -46,7 +46,7 @@ class Carro: public Repartidor{
     public:
     Carro(){
         speed = 30;
-        tipoRepartidor = "Carro";
+        tipoRepartidor = "carro";
     }
 };
 

@@ -3,26 +3,31 @@
 
 #include <iostream>
 #include "repartidores.h"
+#include "lista.h"
 using namespace std;
 
 class Restaurante{
     protected:
-    Bici * repBici;
-    Moto * repMoto;
-    Carro * repCarro;
     int distanciaPedido;
+    ListaSimple<Repartidor*>* listaRepartidores;
 
     Repartidor * repartidorMasCercano;
     double tiempoMasCorto;
 
     public:
     Restaurante(){
-        repBici = new Bici("B");
-        repMoto = new Moto();
-        repCarro = new Carro();
+        
         distanciaPedido = 0;
         tiempoMasCorto = 0;
         repartidorMasCercano = NULL;
+        Repartidor * repBici = new Bici();
+        Repartidor * repMoto = new Moto();
+        Repartidor * repCarro = new Carro();
+        listaRepartidores = new ListaSimple<Repartidor*>();
+        listaRepartidores->insertLast(repBici);
+        listaRepartidores->insertLast(repMoto);
+        listaRepartidores->insertLast(repCarro);
+
     }
 
     void setDistanciaPedido(int pDistancia){
@@ -39,6 +44,11 @@ class Restaurante{
 
     void setDistanciaCarro(int pDistancia){
         repCarro->setDistanciaAlRestaurante(pDistancia);
+    }
+
+    Repartidor * getRepartidor(string tipoRepartidor){
+        Nodo<Repartidor*> * nodo = listaRepartidores->current;
+
     }
 
     void calculateQuickest(){
