@@ -10,6 +10,7 @@ class Repartidor{
     int distanciaAlRestaurante;
     int speed;
     string tipoRepartidor;
+    bool pedidoPendiente = false;
 
 
     int calculateTime(int pDistanciaPedido){

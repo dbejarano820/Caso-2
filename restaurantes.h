@@ -6,22 +6,22 @@
 using namespace std;
 
 class Restaurante{
-    public:
+    protected:
     Bici * repBici;
     Moto * repMoto;
     Carro * repCarro;
     int distanciaPedido;
 
     Repartidor * repartidorMasCercano;
-    int distanciaMasCercano;
+    double tiempoMasCorto;
 
-    //public:
+    public:
     Restaurante(){
         repBici = new Bici();
         repMoto = new Moto();
         repCarro = new Carro();
         distanciaPedido = 0;
-        distanciaMasCercano = 0;
+        tiempoMasCorto = 0;
         repartidorMasCercano = NULL;
     }
 
@@ -42,7 +42,23 @@ class Restaurante{
     }
 
     void calculateQuickest(){
+        tiempoMasCorto = repBici->calculateTime(distanciaPedido);
+        repartidorMasCercano = repBici;
+        cout << "La bici dura " << repBici->calculateTime(distanciaPedido) << endl;
 
+        if (repMoto->calculateTime(distanciaPedido) < tiempoMasCorto){
+            tiempoMasCorto = repMoto->calculateTime(distanciaPedido);
+            repartidorMasCercano = repMoto;
+        }
+        cout << "La moto dura " << repMoto->calculateTime(distanciaPedido) << endl;
+
+        if (repCarro->calculateTime(distanciaPedido) < tiempoMasCorto){
+            tiempoMasCorto = repCarro->calculateTime(distanciaPedido);
+            repartidorMasCercano = repCarro;
+        }
+        cout << "El carro dura " << repCarro->calculateTime(distanciaPedido) << endl;
+
+        cout << "El repartidor mas rapido es el que va en "<<repartidorMasCercano->getTipoRepartidor() << endl;
     }
 };
 
