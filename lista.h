@@ -8,7 +8,7 @@ class Nodo{
     Nodo<T>* siguiente;
 
     public:
-    Node(T &pData){
+    Nodo(T &pData){
         this->dato = &pData;
         this->siguiente = nullptr;
     }
@@ -41,11 +41,60 @@ class ListaSimple{
         count = 0;
     }
 
-    bool isEmpty();
-    void insertFirst(T &pValue);
-    void insertLast(T &pValue);
-    T eraseFirst();
-    T seeFirst();
+    bool isEmpty(){
+        return count == 0;
+    }
+
+    void insertFirst(T &pValue){
+        Nodo<T>* nuevoNodo = new Nodo<T>(pValue);
+        if (this->primerNodo != nullptr){
+            nuevoNodo->setSiguiente(primerNodo);
+            primerNodo = nuevoNodo;
+        } else{
+            primerNodo = ultimoNodo = nuevoNodo;
+        }
+        count++;
+        current = primerNodo;
+    }
+
+    void insertLast(T &pValue){
+        Nodo<T>* nuevoNodo = new Nodo<T>(pValue);
+        if (this->ultimoNodo != nullptr){
+            this->ultimoNodo->setSiguiente(nuevoNodo);
+            this->ultimoNodo = nuevoNodo;
+        } else{
+            primerNodo = ultimoNodo = nuevoNodo;
+        }
+        count++;
+        current = primerNodo;
+    }
+
+    T eraseFirst(){
+        if(isEmpty())
+            return (T)nullptr;
+        else{
+            count--;
+            Nodo<T>* primero = primerNodo;
+            if (count == 0){
+                ultimoNodo = primerNodo = nullptr;
+            } else{
+                primerNodo = primerNodo->getSiguiente();
+            }
+            current = primerNodo;
+            
+            return (T)(*primero).getValue();
+        }
+    }
+
+    T seeFirst(){
+        if (isEmpty()){
+            cout << "VACIA" << endl;
+            return (T)nullptr;
+        } else{
+            cout << primerNodo->getValue() << endl;
+            return primerNodo->getValue();
+        }
+    }
     //bool esta();
 
 };

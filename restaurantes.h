@@ -17,7 +17,7 @@ class Restaurante{
 
     public:
     Restaurante(){
-        repBici = new Bici();
+        repBici = new Bici("B");
         repMoto = new Moto();
         repCarro = new Carro();
         distanciaPedido = 0;

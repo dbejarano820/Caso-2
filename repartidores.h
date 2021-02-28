@@ -28,9 +28,9 @@ class Repartidor{
 
 class Bici: public Repartidor{
     public:
-    Bici(){
+    Bici(string pNombre){
         speed = 10;
-        tipoRepartidor = "Bici";
+        tipoRepartidor = pNombre;
     }
 };
 

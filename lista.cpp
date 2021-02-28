@@ -1,5 +1,5 @@
 #include "lista.h"
-
+/*
 template <class T>
 bool ListaSimple<T>::isEmpty(){
     return primerNodo == nullptr;
@@ -7,17 +7,17 @@ bool ListaSimple<T>::isEmpty(){
 
 template<class T>
 void ListaSimple<T>::insertFirst(T &pValue){
-    Nodo<T>* nuevoNodo = nullptr;
-    nuevoNodo = new Nodo<T>(pValue);
-    if (this->primerNodo != nullptr){
-        nuevoNodo->setSiguiente(primerNodo);
-        primerNodo = nuevoNodo;
-    } else{
-        primerNodo = ultimoNodo = nuevoNodo;
+        Nodo<T>* nuevoNodo = nullptr;
+        nuevoNodo = new Nodo<T>(pValue);
+        if (this->primerNodo != nullptr){
+            nuevoNodo->setSiguiente(primerNodo);
+            primerNodo = nuevoNodo;
+        } else{
+            primerNodo = ultimoNodo = nuevoNodo;
+        }
+        count++;
+        current = primerNodo;
     }
-    count++;
-    current = primerNodo;
-}
 
 template<class T>
 void ListaSimple<T>::insertLast(T &pValue){
@@ -54,3 +54,4 @@ template<class T>
 T ListaSimple<T>::seeFirst(){
     return primerNodo->getValue();
 }
+*/

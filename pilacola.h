@@ -1,17 +1,33 @@
 #include "lista.h"
-/*
-class Pila : public listaSimple{
+
+template<class T>
+class Pila : public ListaSimple<T>{
     public:
-    Nodo* pop();
-    void push(Nodo* );
-    Nodo* peek();
+    T pop(){
+        return (T)ListaSimple<T>::eraseFirst();
+    }
+    void push(T &pValue){
+        ListaSimple<T>::insertFirst(pValue);
+    }
+
+    T peek(){
+        return (T)ListaSimple<T>::seeFirst();
+    }
 };
 
-class Cola : public listaSimple{
+template<class T>
+class Cola : public ListaSimple<T>{
 
     public:
-    void encolar(Nodo* );
-    Nodo* desencolar();
-    Nodo* verFrente();
+    void encolar(T &pValue){
+        ListaSimple<T>::insertLast(pValue);
+    }
+
+    T desencolar(){
+        return (T)ListaSimple<T>::eraseFirst();
+    }
+
+    T verFrente(){
+        return (T)ListaSimple<T>::seeFirst();
+    }
 };
-*/
