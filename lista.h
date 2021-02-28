@@ -1,48 +1,51 @@
 #include <iostream>
 using namespace std;
 
+template <class T>
 class Nodo{
+    private:
+    T* dato;
+    Nodo<T>* siguiente;
+
     public:
-    int dato;
-    //cualquier tipo de dato adicionales
-
-    Nodo* siguiente;
-
-    Nodo(){
-        dato = 0;
-        siguiente = NULL;
+    Node(T &pData){
+        this->dato = &pData;
+        this->siguiente = nullptr;
     }
 
-    Nodo(int pDato){
-        dato = pDato;
-        siguiente = NULL;
+    T getValue(){
+        return (*this->dato);
     }
 
-    Nodo(int pDato, Nodo* pNodo){
-        dato = pDato;
-        siguiente = pNodo;
+    Nodo<T>* getSiguiente(){
+        return this->siguiente;
+    }
+
+    void setSiguiente(Nodo<T>* pSiguiente){
+        this->siguiente = pSiguiente;
     }
 };
 
+template<class T>
+class ListaSimple{
 
-class listaSimple{
+    private:
+    int count = 0;
+    Nodo<T>* primerNodo; //first node
+    Nodo<T>* ultimoNodo; //last node
+    Nodo<T>* current;
 
     public:
-
-    Nodo* primerNodo; //first node
-    Nodo* ultimoNodo; //last node
-
-    listaSimple(){
-        primerNodo = ultimoNodo = NULL;
+    ListaSimple(){
+        primerNodo = ultimoNodo = current = nullptr;
+        count = 0;
     }
 
     bool isEmpty();
-    void insertFirst(Nodo*);
-    void insertLast(Nodo*);
-    int largo();
-    Nodo* eraseFirst();
-    Nodo* eraseLast();
-    Nodo* seeFirst();
+    void insertFirst(T &pValue);
+    void insertLast(T &pValue);
+    T eraseFirst();
+    T seeFirst();
     //bool esta();
 
 };

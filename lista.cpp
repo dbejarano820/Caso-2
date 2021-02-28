@@ -1,75 +1,55 @@
 #include "lista.h"
 
-bool listaSimple::isEmpty(){
-    return primerNodo == NULL;
+template <class T>
+bool ListaSimple<T>::isEmpty(){
+    return primerNodo == nullptr;
 }
 
-int listaSimple::largo(){
-    int contador = 0;
-    Nodo* tmp = primerNodo;
-    while(tmp!=NULL){
-        contador++;
-        tmp = tmp->siguiente;
+template<class T>
+void ListaSimple<T>::insertFirst(T &pValue){
+    Nodo<T>* nuevoNodo = new Nodo<T>(pValue);
+    if (this->primerNodo != nullptr){
+        nuevoNodo->setSiguiente(primerNodo);
+        primerNodo = nuevoNodo
+    } else{
+        primerNodo = ultimoNodo = nuevoNodo;
     }
-    return contador;
+    count++;
+    current = primerNodo;
 }
 
-void listaSimple::insertFirst(Nodo* pNodo){
-
-    if(isEmpty())
-        ultimoNodo = primerNodo = pNodo;
-    else{
-
-        pNodo->siguiente = primerNodo;
-        primerNodo = pNodo;
+template<class T>
+void ListaSimple<T>::insertLast(T &pValue){
+    Nodo<T>* nuevoNodo = new Nodo<T>(pValue);
+    if (this->ultimoNodo != nullptr){
+        this->ultimoNodo->setSiguiente(nuevoNodo);
+        this->ultimoNodo = nuevoNodo
+    } else{
+        primerNodo = ultimoNodo = nuevoNodo;
     }
+    count++;
+    current = primerNodo;
 }
 
-void listaSimple::insertLast(Nodo* pNodo){
-
+template<class T>
+T ListaSimple<T>::eraseFirst(){
     if(isEmpty())
-        ultimoNodo = primerNodo = pNodo;
-
+        return nullptr;
     else{
-        ultimoNodo->siguiente = pNodo;
-        ultimoNodo = pNodo;
-    }
-}
-
-Nodo* listaSimple::eraseFirst(){
-    if(isEmpty())
-        return NULL;
-    else{
-        Nodo* borrado = primerNodo;
-        primerNodo = primerNodo->siguiente;
-        borrado->siguiente = NULL;
-        if(primerNodo == NULL)
-            ultimoNodo = primerNodo;
-        return borrado;
-    }
-}
-
-Nodo* listaSimple::eraseLast(){
-
-    if(isEmpty())
-        return NULL;
-
-    else{
-        Nodo* borrado;
-        Nodo* tmp = primerNodo;
-        if(tmp->siguiente == NULL){
-            primerNodo = ultimoNodo = NULL;
-            return tmp;
+        count--;
+        Nodo<T>* primero = primerNodo;
+        if (count == 0){
+            ultimoNodo = primerNodo = nullptr;
+        } else{
+            primerNodo = primerNodo->getSiguiente();
         }
-        while(tmp->siguiente->siguiente != NULL)
-            tmp = tmp->siguiente;
-
-            borrado = tmp->siguiente;
-            ultimoNodo = tmp;
-            return borrado;
+        current = primerNodo;
+        
+        return (T)(*primero).getValue;
     }
 }
 
-Nodo* listaSimple::seeFirst(){
-    return primerNodo;
+template<class T>
+T ListaSimple<T>::seeFirst(){
+    return primerNodo->getValue();
 }

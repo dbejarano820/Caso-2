@@ -3,8 +3,8 @@
 
 int main(){
 
-    listaSimple* lista = new listaSimple();
-    lista->insertFirst(new Nodo(4));
+    ListaSimple<int>* lista = new ListaSimple<int>();
+    //lista->insertFirst(new Nodo(4));
     cout << "FUNCIONA DE ESTA MANERA" << endl;
 
     Restaurante * res = new Restaurante();
