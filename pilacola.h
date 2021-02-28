@@ -1,5 +1,5 @@
 #include "lista.h"
-
+/*
 class Pila : public listaSimple{
     public:
     Nodo* pop();
@@ -14,3 +14,4 @@ class Cola : public listaSimple{
     Nodo* desencolar();
     Nodo* verFrente();
 };
+*/

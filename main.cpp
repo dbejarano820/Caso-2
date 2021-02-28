@@ -2,9 +2,10 @@
 #include "restaurantes.h"
 
 int main(){
-//hola
-    listaSimple* lista = new listaSimple();
-    lista->insertFirst(new Nodo(4));
+    Bici b();
+    ListaSimple<Bici> lista();
+    lista.insertFirst(b);
+    //lista->insertFirst(new Nodo(4));
     cout << "FUNCIONA DE ESTA MANERA" << endl;
 
     Restaurante * res = new Restaurante();

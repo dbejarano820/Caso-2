@@ -1,5 +1,5 @@
 #include "pilacola.h"
-
+/*
 
 void Pila::push(Nodo* pNodo){
     insertFirst(pNodo);
@@ -25,3 +25,4 @@ Nodo* Cola::desencolar(){
 Nodo* Cola::verFrente(){
     return seeFirst();
 }
+*/

@@ -7,10 +7,11 @@ bool ListaSimple<T>::isEmpty(){
 
 template<class T>
 void ListaSimple<T>::insertFirst(T &pValue){
-    Nodo<T>* nuevoNodo = new Nodo<T>(pValue);
+    Nodo<T>* nuevoNodo = nullptr;
+    nuevoNodo = new Nodo<T>(pValue);
     if (this->primerNodo != nullptr){
         nuevoNodo->setSiguiente(primerNodo);
-        primerNodo = nuevoNodo
+        primerNodo = nuevoNodo;
     } else{
         primerNodo = ultimoNodo = nuevoNodo;
     }
@@ -23,7 +24,7 @@ void ListaSimple<T>::insertLast(T &pValue){
     Nodo<T>* nuevoNodo = new Nodo<T>(pValue);
     if (this->ultimoNodo != nullptr){
         this->ultimoNodo->setSiguiente(nuevoNodo);
-        this->ultimoNodo = nuevoNodo
+        this->ultimoNodo = nuevoNodo;
     } else{
         primerNodo = ultimoNodo = nuevoNodo;
     }
