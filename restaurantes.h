@@ -2,57 +2,84 @@
 #define _restaurante_
 
 #include <iostream>
+#include <vector>
+#include <list>
 #include "repartidores.h"
 #include "lista.h"
 using namespace std;
 
-class Restaurante{
+
+class IObservable //abstract class
+{
+    public:
+        virtual void addObserver(IObserver *pObserver) = 0;
+        virtual void removeObserver(IObserver *pObserver) = 0;
+        virtual void notify() = 0;
+};
+
+
+
+class Restaurante : public IObservable{
     protected:
-    int distanciaPedido;
-    ListaSimple<Repartidor*>* listaRepartidores;
+    ListaSimple<IObserver*>* listaRepartidores;
 
     Repartidor * repartidorMasCercano;
     double tiempoMasCorto;
 
     public:
-    Restaurante(){
-        
-        distanciaPedido = 0;
-        tiempoMasCorto = 0;
-        repartidorMasCercano = NULL;
-        Repartidor * repBici = new Bici();
-        Repartidor * repMoto = new Moto();
-        Repartidor * repCarro = new Carro();
-        listaRepartidores = new ListaSimple<Repartidor*>();
-        listaRepartidores->insertLast(repBici);
-        listaRepartidores->insertLast(repMoto);
-        listaRepartidores->insertLast(repCarro);
+
+    virtual void addObserver(IObserver* pObserver){
+        listaRepartidores->insertLast(pObserver);
+    }
+
+    virtual void removeObserver(IObserver* pObserver){
+        //listObservers.erase(remove(listObservers.begin(),listObservers.end(), pObserver), listObservers.end());
+    }
+
+    virtual void notify(){
+        cout << "entro" << endl;
+        calculateQuickest();
+        for (int index = 0; index < listaRepartidores->getSize(); index++){
+            cout << index << endl;
+            Repartidor * repartidorActual = (Repartidor*)listaRepartidores->getIndex(index);
+            if (repartidorActual == repartidorMasCercano){
+                repartidorActual->update(true);
+            } else{
+                repartidorActual->update(false);
+            }
+        }
 
     }
 
-    void setDistanciaPedido(int pDistancia){
-        distanciaPedido = pDistancia;
+    Restaurante(){
+        
+        tiempoMasCorto = 0;
+        repartidorMasCercano = NULL;
+        listaRepartidores = new ListaSimple<IObserver*>();
+        addObserver(new Bicycle());
+        addObserver(new Motorcycle());
+        addObserver(new Car());
     }
 
     void setDistanciaBici(int pDistancia){
-        Repartidor * bici = getRepartidor("bici");
-        bici->setDistanciaAlRestaurante(pDistancia);
+        Repartidor * bici = getRepartidor("bicycle");
+        bici->setDistance(pDistancia);
     }
 
     void setDistanciaMoto(int pDistancia){
-        Repartidor * moto = getRepartidor("moto");
-        moto->setDistanciaAlRestaurante(pDistancia);
+        Repartidor * moto = getRepartidor("motorcycle");
+        moto->setDistance(pDistancia);
     }
 
     void setDistanciaCarro(int pDistancia){
-        Repartidor * carro = getRepartidor("carro");
-        carro->setDistanciaAlRestaurante(pDistancia);
+        Repartidor * carro = getRepartidor("car");
+        carro->setDistance(pDistancia);
     }
 
     Repartidor * getRepartidor(string pTipoRepartidor){
         for (int index = 0; index < listaRepartidores->getSize(); index++){
-            Repartidor* repartidor = listaRepartidores->getIndex(index);
-            if (repartidor->tipoRepartidor == pTipoRepartidor){
+            Repartidor* repartidor = (Repartidor*)listaRepartidores->getIndex(index);
+            if (repartidor->getType() == pTipoRepartidor){
                 return repartidor;
             }
         }
@@ -60,41 +87,24 @@ class Restaurante{
     }
 
     void calculateQuickest(){
-        Repartidor * repartidor = listaRepartidores->getIndex(0);
-        tiempoMasCorto = repartidor->calculateTime(distanciaPedido);
+        Repartidor * repartidor = (Repartidor*)listaRepartidores->getIndex(0);
+        tiempoMasCorto = repartidor->calculateTime();
         repartidorMasCercano = repartidor;
-        cout << "El repartidor en " << repartidor->getTipoRepartidor() << " dura " << tiempoMasCorto <<endl;
+        cout << "The " << repartidor->getType() << " takes " << tiempoMasCorto <<endl;
 
         for (int index = 1; index < listaRepartidores->getSize(); index++){
-            repartidor = listaRepartidores->getIndex(index);
-            double tiempo = repartidor->calculateTime(distanciaPedido);
+            repartidor = (Repartidor*)listaRepartidores->getIndex(index);
+            double tiempo = repartidor->calculateTime();
             if (tiempo < tiempoMasCorto){
                 tiempoMasCorto = tiempo;
                 repartidorMasCercano = repartidor;
             }
-            cout << "El repartidor en " << repartidor->getTipoRepartidor() << " dura " << tiempoMasCorto <<endl;
+            cout << "The " << repartidor->getType() << " takes " << tiempoMasCorto <<endl;
         }
-
-        /*tiempoMasCorto = repBici->calculateTime(distanciaPedido);
-        repartidorMasCercano = repBici;
-        cout << "La bici dura " << repBici->calculateTime(distanciaPedido) << endl;
-
-        if (repMoto->calculateTime(distanciaPedido) < tiempoMasCorto){
-            tiempoMasCorto = repMoto->calculateTime(distanciaPedido);
-            repartidorMasCercano = repMoto;
-        }
-        cout << "La moto dura " << repMoto->calculateTime(distanciaPedido) << endl;
-
-        if (repCarro->calculateTime(distanciaPedido) < tiempoMasCorto){
-            tiempoMasCorto = repCarro->calculateTime(distanciaPedido);
-            repartidorMasCercano = repCarro;
-        }
-        cout << "El carro dura " << repCarro->calculateTime(distanciaPedido) << endl;
-        */
-        
-        cout << "El repartidor mas rapido es el que va en "<<repartidorMasCercano->getTipoRepartidor()
-        << "y dura " << tiempoMasCorto << endl;
     }
 };
+
+
+
 
 #endif

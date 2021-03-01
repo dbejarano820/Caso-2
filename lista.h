@@ -92,7 +92,7 @@ class ListaSimple{
 
     T seeFirst(){
          if (count == 0){
-            cout << "VACIA" << endl;
+            cout << "La lista esta vaica" << endl;
             return (T)NULL;
         } else{
             cout << primerNodo->getValue() << endl;

@@ -1,56 +1,92 @@
 #ifndef _repartidores_
 #define _repartidores_
-
 #include <iostream>
 using namespace std;
 
-
-class Repartidor{
+class IObserver //interface
+{
     public:
-    int distanciaAlRestaurante;
-    int speed;
-    string tipoRepartidor;
-    bool pedidoPendiente;
-
-
-    int calculateTime(int pDistanciaPedido){
-        return (distanciaAlRestaurante + pDistanciaPedido) / speed;
-    }
-
-    void setDistanciaAlRestaurante(int pDistancia){
-        distanciaAlRestaurante = pDistancia;
-    }
-
-    string getTipoRepartidor(){
-        return tipoRepartidor;
-    }
+        virtual void update(bool) = 0;
+        
 };
 
-class Bici: public Repartidor{
+class Repartidor : public IObserver{
     public:
-    Bici(){
-        speed = 10;
-        tipoRepartidor = "bici";
-        pedidoPendiente = false;
-    }
+        int distance;
+        int speed;
+        bool pendingOrder;
+
+        virtual double calculateTime(){
+            return (distance / (speed + 0.0));
+        }
+
+        virtual void setDistance(int pDistance){
+            distance = pDistance;
+        }
+
+        virtual string getType() = 0;
 };
 
-class Moto: public Repartidor{
+class Bicycle : public Repartidor{
     public:
-    Moto(){
-        speed = 20;
-        tipoRepartidor = "moto";
-        pedidoPendiente = false;
-    }
+        Bicycle(){
+            speed = 5;
+            pendingOrder = false;
+        }
+
+        virtual void update(bool pOrder){
+            pendingOrder = pOrder;
+            if (pendingOrder){
+                cout << "The bicycle will deliver the order" << endl;
+            } else{
+                cout << "The bicycle will not deliver the order" << endl;
+            }
+        }
+
+        virtual string getType(){
+            return "bicycle";
+        }
 };
 
-class Carro: public Repartidor{
+class Motorcycle : public Repartidor{
     public:
-    Carro(){
-        speed = 30;
-        tipoRepartidor = "carro";
-        pedidoPendiente = false;
-    }
+        Motorcycle(){
+            speed = 20;
+            pendingOrder = false;
+        }
+
+        virtual void update(bool pOrder){
+            pendingOrder = pOrder;
+            if (pendingOrder){
+                cout << "The motorcycle will deliver the order" << endl;
+            } else{
+                cout << "The motorcycle will not deliver the order" << endl;
+            }
+        }
+
+        virtual string getType(){
+            return "motorcycle";
+        }
 };
 
+class Car : public Repartidor{
+    public:
+        Car(){
+            speed = 15;
+            pendingOrder = false;
+        }
+
+        virtual void update(bool pOrder){
+            pendingOrder = pOrder;
+            if (pendingOrder){
+                cout << "The car will deliver the order" << endl;
+            } else{
+                cout << "The car will not deliver the order" << endl;
+            }
+        }
+
+        virtual string getType(){
+            return "car";
+        }
+};
 #endif

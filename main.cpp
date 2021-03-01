@@ -6,8 +6,6 @@ using namespace std;
 #include "repartidores.h"
 
 int main(){
-    
-    cout << endl;
     int valor = 4;
     int valor2 = 6;
     int valor3 = 10;
@@ -33,6 +31,7 @@ int main(){
     cout << c.desencolar() << endl;;
     c.verFrente();
 
+   
     cout << "FUNCIONA DE ESTA MANERA" << endl;
 
     
@@ -41,9 +40,6 @@ int main(){
     int distanciaBici;
     int distanciaMoto;
     int distanciaCarro;
-    int distanciaPedido;
-    cout << "Que tan lejos esta el pedido del restaurante?" << endl;
-    cin >> distanciaPedido;
 
     cout << "Que tan lejos esta el repartidor en bici del restaurante?" << endl;
     cin >> distanciaBici;
@@ -59,9 +55,7 @@ int main(){
     res->setDistanciaBici(distanciaBici);
     res->setDistanciaMoto(distanciaMoto);
     res->setDistanciaCarro(distanciaCarro);
-    res->setDistanciaPedido(distanciaPedido);
-    res->calculateQuickest();
+    res->notify();
     
-
     return 0;
-}
+};
