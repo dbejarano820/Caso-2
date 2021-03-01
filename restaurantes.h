@@ -2,10 +2,45 @@
 #define _restaurante_
 
 #include <iostream>
+#include <vector>
+#include <list>
 #include "repartidores.h"
 #include "lista.h"
 using namespace std;
 
+
+class IObservable //abstract class
+{
+    public:
+        virtual void addObserver(IObserver *pObserver) = 0;
+        virtual void removeObserver(IObserver *pObserver) = 0;
+        virtual void notify() = 0;
+};
+
+class Restaurante : public IObservable
+{
+    public:
+    vector <IObserver *> listObservers;
+
+    virtual void addObserver(IObserver* pObserver){
+        listObservers.push_back(pObserver);
+    }
+
+    virtual void removeObserver(IObserver* pObserver){
+        listObservers.erase(remove(listObservers.begin(),listObservers.end(), pObserver), listObservers.end());
+    }
+
+    virtual void notify(){
+
+        // calculateQuickest();
+        //recorrer lista
+
+    }
+
+};
+
+
+/*
 class Restaurante{
     protected:
     int distanciaPedido;
@@ -72,5 +107,6 @@ class Restaurante{
         */
     }
 };
+*/
 
 #endif

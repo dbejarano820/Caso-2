@@ -1,11 +1,88 @@
 #ifndef _repartidores_
 #define _repartidores_
-
 #include <iostream>
 using namespace std;
 
+class IObserver //interface
+{
+    public:
+        virtual void update(bool) = 0; 
+};
 
-class Repartidor{
+
+class Bicycle : public IObserver{
+    public:
+        int distance;
+        int speed;
+        bool pendingOrder;
+
+        Bicycle(){
+            speed = 5;
+            pendingOrder = false;
+        }
+
+        virtual void update(bool pOrder){
+            pendingOrder = pOrder;
+        }
+
+        void setDistance(int pDistance){
+            distance = pDistance;
+        }
+
+        int calculateDistance(){
+            return (distance / speed);
+        }
+};
+
+class Motorcycle : public IObserver{
+    public:
+        int distance;
+        int speed;
+        bool pendingOrder;
+
+        Motorcycle(){
+            speed = 5;
+            pendingOrder = false;
+        }
+
+        virtual void update(bool pOrder){
+            pendingOrder = pOrder;
+        }
+
+        void setDistance(int pDistance){
+            distance = pDistance;
+        }
+
+        int calculateDistance(){
+            return (distance / speed);
+        }
+};
+
+class Car : public IObserver{
+    public:
+        int distance;
+        int speed;
+        bool pendingOrder;
+
+        Car(){
+            speed = 5;
+            pendingOrder = false;
+        }
+
+        virtual void update(bool pOrder){
+            pendingOrder = pOrder;
+        }
+
+        void setDistance(int pDistance){
+            distance = pDistance;
+        }
+
+        int calculateDistance(){
+            return (distance / speed);
+        }
+};
+/*
+class Repartidor {
     public:
     int distanciaAlRestaurante;
     int speed;
@@ -52,5 +129,5 @@ class Carro: public Repartidor{
         pedidoPendiente = false;
     }
 };
-
+*/
 #endif

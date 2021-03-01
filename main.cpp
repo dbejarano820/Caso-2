@@ -33,6 +33,8 @@ int main(){
     cout << c.desencolar() << endl;;
     c.verFrente();
 
+   
+/*
     cout << "FUNCIONA DE ESTA MANERA" << endl;
 
     /*
@@ -62,6 +64,5 @@ int main(){
     res->setDistanciaPedido(distanciaPedido);
     res->calculateQuickest();
     */
-
     return 0;
-}
+};
