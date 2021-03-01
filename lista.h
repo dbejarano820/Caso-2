@@ -101,11 +101,13 @@ class ListaSimple{
     }
 
     T getIndex(int pIndex){
-        if (pIndex >=0 || pIndex < count){
-            for(int currentIndex; currentIndex < pIndex; currentIndex++){
-                current = current->getSiguiente();
+        if (pIndex >=0 && pIndex < count){
+            Nodo <T>* nodoTmp = primerNodo;
+            for(int currentIndex = 0; currentIndex < pIndex; currentIndex++){
+                nodoTmp = nodoTmp->getSiguiente();
+                //current = current->getSiguiente();
             }
-            return current->getValue();
+            return  nodoTmp->getValue();  //current->getValue();
         } else{
             return (T)NULL;
         }

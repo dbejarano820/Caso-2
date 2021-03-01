@@ -7,7 +7,6 @@ class IObserver //interface
 {
     public:
         virtual void update(bool) = 0;
-        
 };
 
 class Repartidor : public IObserver{
@@ -43,7 +42,7 @@ class Bicycle : public Repartidor{
             }
         }
 
-        virtual string getType(){
+        virtual string getType() {
             return "bicycle";
         }
 };
@@ -64,7 +63,7 @@ class Motorcycle : public Repartidor{
             }
         }
 
-        virtual string getType(){
+        virtual string getType() {
             return "motorcycle";
         }
 };
@@ -85,7 +84,7 @@ class Car : public Repartidor{
             }
         }
 
-        virtual string getType(){
+        virtual string getType() {
             return "car";
         }
 };
