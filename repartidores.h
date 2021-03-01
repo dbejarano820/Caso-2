@@ -30,7 +30,7 @@ class Bici: public Repartidor{
     public:
     Bici(){
         speed = 10;
-        tipoRepartidor = "Bici";
+        tipoRepartidor = "bici";
         pedidoPendiente = false;
     }
 };
@@ -39,7 +39,7 @@ class Moto: public Repartidor{
     public:
     Moto(){
         speed = 20;
-        tipoRepartidor = "Moto";
+        tipoRepartidor = "moto";
         pedidoPendiente = false;
     }
 };
@@ -48,7 +48,7 @@ class Carro: public Repartidor{
     public:
     Carro(){
         speed = 30;
-        tipoRepartidor = "Carro";
+        tipoRepartidor = "carro";
         pedidoPendiente = false;
     }
 };

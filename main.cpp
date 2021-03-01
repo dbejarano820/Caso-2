@@ -35,7 +35,7 @@ int main(){
 
     cout << "FUNCIONA DE ESTA MANERA" << endl;
 
-    /*
+    
     Restaurante * res = new Restaurante();
 
     int distanciaBici;
@@ -61,7 +61,7 @@ int main(){
     res->setDistanciaCarro(distanciaCarro);
     res->setDistanciaPedido(distanciaPedido);
     res->calculateQuickest();
-    */
+    
 
     return 0;
 }

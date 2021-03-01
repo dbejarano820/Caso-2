@@ -99,7 +99,21 @@ class ListaSimple{
             return primerNodo->getValue();
         }
     }
-    //bool esta();
+
+    T getIndex(int pIndex){
+        if (pIndex >=0 || pIndex < count){
+            for(int currentIndex; currentIndex < pIndex; currentIndex++){
+                current = current->getSiguiente();
+            }
+            return current->getValue();
+        } else{
+            return (T)NULL;
+        }
+    }
+
+    int getSize(){
+        return count;
+    }
 
 };
 

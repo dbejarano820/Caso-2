@@ -35,23 +35,46 @@ class Restaurante{
     }
 
     void setDistanciaBici(int pDistancia){
-        //repBici->setDistanciaAlRestaurante(pDistancia);
+        Repartidor * bici = getRepartidor("bici");
+        bici->setDistanciaAlRestaurante(pDistancia);
     }
 
     void setDistanciaMoto(int pDistancia){
-        //repMoto->setDistanciaAlRestaurante(pDistancia);
+        Repartidor * moto = getRepartidor("moto");
+        moto->setDistanciaAlRestaurante(pDistancia);
     }
 
     void setDistanciaCarro(int pDistancia){
-        //repCarro->setDistanciaAlRestaurante(pDistancia);
+        Repartidor * carro = getRepartidor("carro");
+        carro->setDistanciaAlRestaurante(pDistancia);
     }
 
-    Repartidor * getRepartidor(string tipoRepartidor){
-        //Nodo<Repartidor*> * nodo = listaRepartidores->current;
-
+    Repartidor * getRepartidor(string pTipoRepartidor){
+        for (int index = 0; index < listaRepartidores->getSize(); index++){
+            Repartidor* repartidor = listaRepartidores->getIndex(index);
+            if (repartidor->tipoRepartidor == pTipoRepartidor){
+                return repartidor;
+            }
+        }
+        return NULL;
     }
 
     void calculateQuickest(){
+        Repartidor * repartidor = listaRepartidores->getIndex(0);
+        tiempoMasCorto = repartidor->calculateTime(distanciaPedido);
+        repartidorMasCercano = repartidor;
+        cout << "El repartidor en " << repartidor->getTipoRepartidor() << " dura " << tiempoMasCorto <<endl;
+
+        for (int index = 1; index < listaRepartidores->getSize(); index++){
+            repartidor = listaRepartidores->getIndex(index);
+            double tiempo = repartidor->calculateTime(distanciaPedido);
+            if (tiempo < tiempoMasCorto){
+                tiempoMasCorto = tiempo;
+                repartidorMasCercano = repartidor;
+            }
+            cout << "El repartidor en " << repartidor->getTipoRepartidor() << " dura " << tiempoMasCorto <<endl;
+        }
+
         /*tiempoMasCorto = repBici->calculateTime(distanciaPedido);
         repartidorMasCercano = repBici;
         cout << "La bici dura " << repBici->calculateTime(distanciaPedido) << endl;
@@ -67,9 +90,10 @@ class Restaurante{
             repartidorMasCercano = repCarro;
         }
         cout << "El carro dura " << repCarro->calculateTime(distanciaPedido) << endl;
-
-        cout << "El repartidor mas rapido es el que va en "<<repartidorMasCercano->getTipoRepartidor() << endl;
         */
+        
+        cout << "El repartidor mas rapido es el que va en "<<repartidorMasCercano->getTipoRepartidor()
+        << "y dura " << tiempoMasCorto << endl;
     }
 };
 
