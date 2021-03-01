@@ -35,7 +35,7 @@ class Restaurante : public IObservable{
     }
 
     virtual void removeObserver(IObserver* pObserver){
-        listaRepartidores.erase(remove(listaRepartidores.begin(),listaRepartidores.end(), pObserver), listaRepartidores.end());
+        //listaRepartidores.erase(remove(listaRepartidores.begin(),listaRepartidores.end(), pObserver), listaRepartidores.end());
     }
 
     virtual void notify(){
@@ -69,7 +69,7 @@ class Restaurante : public IObservable{
             }
 
         }
-        cout << "The " << repartidorMasCercano->getType() << " is the closest delivery driver with speed of " << tiempoMasCorto << " km/h" << endl << endl;
+        cout << "The " << repartidorMasCercano->getType() << " delivery driver was chosen for the delivery with an estimated time of " << tiempoMasCorto << " h" << endl << endl;
         return repartidorMasCercano;
     }
 
