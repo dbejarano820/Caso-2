@@ -6,7 +6,7 @@ using namespace std;
 
 template <class T>
 class Nodo{
-    private:
+    public:
     T* dato;
     Nodo<T>* siguiente;
 
@@ -49,55 +49,41 @@ class ListaSimple{
     }
 
     void insertFirst(T &pValue){
-        Nodo<T>* nuevoNodo = new Nodo<T>(pValue);
+        Nodo<T>* nuevoNodo = nullptr;
+        nuevoNodo = new Nodo<T>(pValue);
         if (this->primerNodo != nullptr){
             nuevoNodo->setSiguiente(primerNodo);
-            primerNodo = nuevoNodo;
+            this->primerNodo = nuevoNodo;
         } else{
-            primerNodo = ultimoNodo = nuevoNodo;
+            this->primerNodo = this->ultimoNodo = nuevoNodo;
         }
-        count++;
-        current = primerNodo;
+        this->count++;
+        this->current = this->primerNodo;
     }
 
     void insertLast(T &pValue){
-        Nodo<T>* nuevoNodo = new Nodo<T>(pValue);
+        Nodo<T>* nuevoNodo = nullptr;
+        nuevoNodo = new Nodo<T>(pValue);
         if (this->ultimoNodo != nullptr){
             this->ultimoNodo->setSiguiente(nuevoNodo);
             this->ultimoNodo = nuevoNodo;
         } else{
-            primerNodo = ultimoNodo = nuevoNodo;
+            this->primerNodo = this->ultimoNodo = nuevoNodo;
         }
-        count++;
-        current = primerNodo;
+        this->count++;
+        this->current = this->primerNodo;
     }
 
-    T eraseFirst(){
-        if(count == 0){
-            return (T)NULL;
-        }
-        else{
-            count--;
-            Nodo<T>* primero = primerNodo;
-            if (count == 0){
-                ultimoNodo = primerNodo = nullptr;
-            } else{
-                primerNodo = primerNodo->getSiguiente();
-            }
-            current = primerNodo;
-            
-            return (T)(*primero).getValue();
-        }
+    T eraseFirst(){   
+        this->current = this->primerNodo->siguiente;
+        T first = (*this->primerNodo).getValue();
+        this->primerNodo = this->current;
+        return first;
     }
 
     T seeFirst(){
-         if (count == 0){
-            cout << "La lista esta vaica" << endl;
-            return (T)NULL;
-        } else{
-            cout << primerNodo->getValue() << endl;
-            return primerNodo->getValue();
-        }
+            this->current = this->primerNodo;
+            return (T)(*primerNodo).getValue();
     }
 
     T getIndex(int pIndex){
@@ -117,6 +103,12 @@ class ListaSimple{
         return count;
     }
 
+};
+
+struct DummyStruct{
+    public:
+    int num;
+    string name;    
 };
 
 #endif

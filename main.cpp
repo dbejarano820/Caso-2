@@ -33,7 +33,7 @@ int main(){
     cout << valor5 << " is pushed" << endl;
     cout << p.pop() << " is popped" << endl;
     cout << "Peek after pop: ";
-    p.peek();
+    cout << p.peek() << endl;;
     cout << endl << endl;
 
 
@@ -49,11 +49,35 @@ int main(){
     cout << valor5 << " is queued" << endl;
     cout << c.desencolar() << " is unqueued" << endl;
     cout << "Next element to be unqueued would be: ";
-    c.verFrente();
+    cout << c.verFrente() << endl;;
     cout << endl << endl;
 
+    //Funciona para struct tambien
+    cout << "Pila con structs:" << endl;
+    DummyStruct struct1 = DummyStruct();
+    struct1.name = "struct1";
+    DummyStruct struct2 = DummyStruct();
+    struct2.name = "struct2";
+    DummyStruct struct3 = DummyStruct();
+    struct3.name = "struct3";
+
+    Pila<DummyStruct> pilaStructs;
+
+    pilaStructs.push(struct2);
+    cout << struct2.name << " is pushed" << endl;
+    pilaStructs.push(struct3);
+    cout << struct3.name << " is pushed" << endl;
+    pilaStructs.push(struct1);
+    cout << struct1.name << " is pushed" << endl;
+    
+    cout << pilaStructs.pop().name << " is popped" << endl;
+    cout << "Peek after pop: ";
+    cout << pilaStructs.peek().name << endl << endl;
+
+
+
    //Pregunta #2, Opción B
-   //Se utiliza Observer and Strategy pattern
+   //Se utiliza Observer and Strategy pattern, se deben de ingresar las distancias de cada repartidor del restaurante
    // Bicycle speed = 5 km/h
    // Car speed = 15 km/h
    // Motorcycle speed = 20 km/h
